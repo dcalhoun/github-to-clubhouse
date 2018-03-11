@@ -1,0 +1,20 @@
+{
+  "name": "github-to-clubhouse",
+  "version": "0.0.1",
+  "description": "Configure Clubhouse to respond to nuanced GitHub events.",
+  "main": "index.js",
+  "repository": "git@github.com:dcalhoun/github-to-clubhouse.git",
+  "author": "David Calhoun <dpcalhoun@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "micro",
+    "dev": "micro-dev"
+  },
+  "dependencies": {
+    "micro": "^9.1.4"
+  },
+  "devDependencies": {
+    "micro-dev": "^2.2.0"
+  }
+}
