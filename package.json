@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "micro-dev",
+    "debug": "node --inspect ./node_modules/.bin/micro-dev",
     "start": "micro",
     "test": "jest"
   },
