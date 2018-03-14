@@ -1,12 +1,8 @@
-const clubhouse = require('./src/clubhouse');
 const { json } = require('micro');
+const { parseRequest } = require('./src/github');
 
 module.exports = async (req, res) => {
   const body = await json(req);
-  const type = req.headers['x-github-event'];
-  if (body.sender && body.sender.login === 'dcalhoun') {
-    if (type === 'create' && body.ref_type === 'branch') {
-      return `>>>>> ${clubhouse.getIdFromBranch(body.ref)}`;
-    }
-  }
+  const event = parseRequest(req.headers['x-github-event'], body);
+  return `>>>>> ${event}`;
 };
