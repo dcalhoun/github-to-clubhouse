@@ -1,7 +1,11 @@
 const clubhouse = require('../clubhouse');
 const fetch = require('node-fetch');
 
-const { getIdFromBranch, markStoryAwaitingCodeReview, startStory } = clubhouse;
+const {
+  getIdFromBranch,
+  markStoryAwaitingCodeReview,
+  markStoryStarted,
+} = clubhouse;
 
 jest.mock('node-fetch');
 
@@ -30,9 +34,9 @@ describe('markStoryAwaitingCodeReview', () => {
   });
 });
 
-describe('startStory', () => {
+describe('markStoryStarted', () => {
   it('sets the IN_DEV workflow state ID', () => {
-    startStory('123');
+    markStoryStarted('123');
     expect(fetch).toHaveBeenCalledWith(
       'https://api.clubhouse.io/api/v2/stories/123',
       {

@@ -17,4 +17,4 @@ exports.getIdFromBranch = name => {
 exports.markStoryAwaitingCodeReview = id =>
   updateStory(id, { workflow_state_id: AWAITING_CODE_REVIEW });
 
-exports.startStory = id => updateStory(id, { workflow_state_id: IN_DEV });
+exports.markStoryStarted = id => updateStory(id, { workflow_state_id: IN_DEV });
