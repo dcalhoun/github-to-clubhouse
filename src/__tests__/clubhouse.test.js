@@ -1,12 +1,10 @@
-const clubhouse = require('../clubhouse');
-const fetch = require('node-fetch');
-
 const {
   getIdFromBranch,
   markStoryAwaitingCodeReview,
   markStoryInQa,
   markStoryStarted,
-} = clubhouse;
+} = require('../clubhouse');
+const fetch = require('node-fetch');
 
 jest.mock('node-fetch');
 

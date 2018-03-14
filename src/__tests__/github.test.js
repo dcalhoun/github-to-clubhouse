@@ -1,6 +1,4 @@
-const github = require('../github');
-
-const { parseRequest } = github;
+const { parseRequest } = require('../github');
 
 describe('parseRequest', () => {
   it('returns undefined', () => {
