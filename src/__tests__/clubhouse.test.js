@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 const {
   getIdFromBranch,
   markStoryAwaitingCodeReview,
+  markStoryInQa,
   markStoryStarted,
 } = clubhouse;
 
@@ -29,6 +30,19 @@ describe('markStoryAwaitingCodeReview', () => {
       {
         method: 'PUT',
         workflow_state_id: 500000030,
+      }
+    );
+  });
+});
+
+describe('markStoryInQa', () => {
+  it('sets the IN_QA workflow state ID', () => {
+    markStoryInQa('123');
+    expect(fetch).toHaveBeenCalledWith(
+      'https://api.clubhouse.io/api/v2/stories/123',
+      {
+        method: 'PUT',
+        workflow_state_id: 500000016,
       }
     );
   });
