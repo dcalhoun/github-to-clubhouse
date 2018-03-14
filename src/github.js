@@ -1,10 +1,17 @@
-exports.parseRequest = (event, body) => {
+const acknowledgedUser = sender => sender && sender.login === 'dcalhoun';
+
+exports.parseRequest = (event, body = {}) => {
   switch (true) {
-    case event === 'create' && body.ref_type === 'branch':
+    case acknowledgedUser(body.sender) &&
+      event === 'create' &&
+      body.ref_type === 'branch':
       return 'branch';
-    case event === 'pull_request' && body.action === 'opened':
+    case acknowledgedUser(body.sender) &&
+      event === 'pull_request' &&
+      body.action === 'opened':
       return 'pullRequestOpened';
-    case event === 'pull_request' &&
+    case acknowledgedUser(body.sender) &&
+      event === 'pull_request' &&
       body.action === 'closed' &&
       body.pull_request &&
       body.pull_request.merged === true:
