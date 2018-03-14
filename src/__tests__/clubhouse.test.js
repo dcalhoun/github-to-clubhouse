@@ -1,7 +1,7 @@
 const clubhouse = require('../clubhouse');
 const fetch = require('node-fetch');
 
-const { getIdFromBranch, startStory } = clubhouse;
+const { getIdFromBranch, markStoryAwaitingCodeReview, startStory } = clubhouse;
 
 jest.mock('node-fetch');
 
@@ -14,6 +14,19 @@ describe('getIdFromBranch', () => {
     it('returns an empty string', () => {
       expect(getIdFromBranch('feature/123/add-foo-bar')).toBe('');
     });
+  });
+});
+
+describe('markStoryAwaitingCodeReview', () => {
+  it('sets the AWAITING_CODE_REVIEW workflow state ID', () => {
+    markStoryAwaitingCodeReview('123');
+    expect(fetch).toHaveBeenCalledWith(
+      'https://api.clubhouse.io/api/v2/stories/123',
+      {
+        method: 'PUT',
+        workflow_state_id: 500000030,
+      }
+    );
   });
 });
 
