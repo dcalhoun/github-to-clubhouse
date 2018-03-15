@@ -8,15 +8,19 @@ describe('parseRequest', () => {
   });
 
   describe('when "create" event and branch ref_type', () => {
-    it('returns "branch"', () => {
+    it('returns undefined', () => {
       expect(parseRequest('create', { ref_type: 'branch' })).toBe(undefined);
     });
 
     describe('when acknowledged user', () => {
-      it('returns undefined', () => {
+      it('returns "branch"', () => {
         expect(
-          parseRequest('create', { ref_type: 'branch', ...acknowledgedUser })
-        ).toBe('branch');
+          parseRequest('create', {
+            ref_type: 'branch',
+            ref: 'feature/ch123/foo-bar',
+            ...acknowledgedUser,
+          })
+        ).toEqual({ event: 'branch', id: '123' });
       });
     });
   });
@@ -33,9 +37,10 @@ describe('parseRequest', () => {
         expect(
           parseRequest('pull_request', {
             action: 'opened',
+            pull_request: { head: { ref: 'feature/ch123/foo-bar' } },
             ...acknowledgedUser,
           })
-        ).toBe('pullRequestOpened');
+        ).toEqual({ event: 'pullRequestOpened', id: '123' });
       });
     });
   });
@@ -43,9 +48,11 @@ describe('parseRequest', () => {
   describe('when "pull_request" event and action "closed"', () => {
     describe('when "merged" is false', () => {
       it('returns undefined', () => {
-        expect(parseRequest('pull_request', { action: 'closed' })).toBe(
-          undefined
-        );
+        expect(
+          parseRequest('pull_request', {
+            action: 'closed',
+          })
+        ).toBe(undefined);
       });
     });
 
@@ -64,10 +71,13 @@ describe('parseRequest', () => {
           expect(
             parseRequest('pull_request', {
               action: 'closed',
-              pull_request: { merged: true },
+              pull_request: {
+                merged: true,
+                head: { ref: 'feature/ch123/foo-bar' },
+              },
               ...acknowledgedUser,
             })
-          ).toBe('pullRequestMerged');
+          ).toEqual({ event: 'pullRequestMerged', id: '123' });
         });
       });
     });

@@ -9,11 +9,6 @@ const IN_QA = 500000016;
 const updateStory = (id, body) =>
   fetch(`${API}/${id}`, { method: 'PUT', ...body });
 
-exports.getIdFromBranch = name => {
-  const match = RegExp(/\/ch(\d+)\//, 'g').exec(name);
-  return match !== null ? match[1] : '';
-};
-
 exports.markStoryAwaitingCodeReview = id =>
   updateStory(id, { workflow_state_id: AWAITING_CODE_REVIEW });
 
