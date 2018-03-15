@@ -1,5 +1,6 @@
 const { parseRequest } = require('../github');
 
+const ignoredUser = { sender: { login: 'stevencwarren' } };
 const acknowledgedUser = { sender: { login: 'dcalhoun' } };
 
 describe('parseRequest', () => {
@@ -9,7 +10,9 @@ describe('parseRequest', () => {
 
   describe('when "create" event and branch ref_type', () => {
     it('returns undefined', () => {
-      expect(parseRequest('create', { ref_type: 'branch' })).toBe(undefined);
+      expect(
+        parseRequest('create', { ref_type: 'branch', ...ignoredUser })
+      ).toBe(undefined);
     });
 
     describe('when acknowledged user', () => {
@@ -27,9 +30,9 @@ describe('parseRequest', () => {
 
   describe('when "pull_request" event and action "opened"', () => {
     it('returns "pullRequestOpened"', () => {
-      expect(parseRequest('pull_request', { action: 'opened' })).toBe(
-        undefined
-      );
+      expect(
+        parseRequest('pull_request', { action: 'opened', ...ignoredUser })
+      ).toBe(undefined);
     });
 
     describe('when acknowledged user', () => {
@@ -51,6 +54,7 @@ describe('parseRequest', () => {
         expect(
           parseRequest('pull_request', {
             action: 'closed',
+            ...ignoredUser,
           })
         ).toBe(undefined);
       });
@@ -62,6 +66,7 @@ describe('parseRequest', () => {
           parseRequest('pull_request', {
             action: 'closed',
             pull_request: { merged: true },
+            ...ignoredUser,
           })
         ).toBe(undefined);
       });
