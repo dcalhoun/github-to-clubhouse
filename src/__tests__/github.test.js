@@ -4,15 +4,15 @@ const ignoredUser = { sender: { login: 'bob' } };
 const acknowledgedUser = { sender: { login: 'john' } };
 
 describe('parseRequest', () => {
-  it('returns undefined', () => {
-    expect(parseRequest()).toBe(undefined);
+  it('returns an empty object', () => {
+    expect(parseRequest()).toEqual({});
   });
 
   describe('when "create" event and branch ref_type', () => {
-    it('returns undefined', () => {
+    it('returns an empty object', () => {
       expect(
         parseRequest('create', { ref_type: 'branch', ...ignoredUser })
-      ).toBe(undefined);
+      ).toEqual({});
     });
 
     describe('when acknowledged user', () => {
@@ -32,7 +32,7 @@ describe('parseRequest', () => {
     it('returns "pullRequestOpened"', () => {
       expect(
         parseRequest('pull_request', { action: 'opened', ...ignoredUser })
-      ).toBe(undefined);
+      ).toEqual({});
     });
 
     describe('when acknowledged user', () => {
@@ -50,25 +50,25 @@ describe('parseRequest', () => {
 
   describe('when "pull_request" event and action "closed"', () => {
     describe('when "merged" is false', () => {
-      it('returns undefined', () => {
+      it('returns an empty object', () => {
         expect(
           parseRequest('pull_request', {
             action: 'closed',
             ...ignoredUser,
           })
-        ).toBe(undefined);
+        ).toEqual({});
       });
     });
 
     describe('when "merged" is true', () => {
-      it('returns undefined', () => {
+      it('returns an empty object', () => {
         expect(
           parseRequest('pull_request', {
             action: 'closed',
             pull_request: { merged: true },
             ...ignoredUser,
           })
-        ).toBe(undefined);
+        ).toEqual({});
       });
 
       describe('when acknowledged user', () => {

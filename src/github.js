@@ -9,7 +9,7 @@ const getIdFromString = name => {
 exports.parseRequest = (event, body = {}) => {
   switch (true) {
     case ignoredUser(body.sender):
-      return undefined;
+      return {};
     case event === 'create' && body.ref_type === 'branch':
       return {
         event: 'branch',
@@ -29,6 +29,6 @@ exports.parseRequest = (event, body = {}) => {
         id: getIdFromString(body.pull_request.head.ref),
       };
     default:
-      return undefined;
+      return {};
   }
 };
