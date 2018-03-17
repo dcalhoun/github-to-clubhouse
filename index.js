@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { json } = require('micro');
 const { parseRequest } = require('./src/github');
 const {

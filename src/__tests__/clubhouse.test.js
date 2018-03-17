@@ -14,7 +14,7 @@ describe('markStoryAwaitingCodeReview', () => {
       'https://api.clubhouse.io/api/v2/stories/123',
       {
         method: 'PUT',
-        workflow_state_id: 500000030,
+        workflow_state_id: 'awaiting-code-review-id',
       }
     );
   });
@@ -27,7 +27,7 @@ describe('markStoryInQa', () => {
       'https://api.clubhouse.io/api/v2/stories/123',
       {
         method: 'PUT',
-        workflow_state_id: 500000016,
+        workflow_state_id: 'in-qa-id',
       }
     );
   });
@@ -40,7 +40,7 @@ describe('markStoryStarted', () => {
       'https://api.clubhouse.io/api/v2/stories/123',
       {
         method: 'PUT',
-        workflow_state_id: 500000007,
+        workflow_state_id: 'in-dev-id',
       }
     );
   });

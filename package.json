@@ -16,6 +16,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "dotenv": "^5.0.1",
     "micro": "^9.1.4",
     "node-fetch": "^2.1.1"
   },
