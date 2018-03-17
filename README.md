@@ -5,6 +5,10 @@
 
 Configure Clubhouse to respond to GitHub events by specific users.
 
+* Creating a branch moves the associated ticket to "in dev".
+* Opening a pull request moves the associated ticket to "awaiting code review".
+* Merging a pull requests moves the associated ticket to "in QA".
+
 ## Usage
 
 1.  `cp .env.dist .env`
