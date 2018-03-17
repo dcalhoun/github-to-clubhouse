@@ -1,7 +1,7 @@
 const { parseRequest } = require('../github');
 
-const ignoredUser = { sender: { login: 'stevencwarren' } };
-const acknowledgedUser = { sender: { login: 'dcalhoun' } };
+const ignoredUser = { sender: { login: 'bob' } };
+const acknowledgedUser = { sender: { login: 'john' } };
 
 describe('parseRequest', () => {
   it('returns undefined', () => {

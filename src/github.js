@@ -1,4 +1,5 @@
-const ignoredUser = sender => sender && sender.login !== 'dcalhoun';
+const ignoredUser = sender =>
+  sender && !process.env.GITHUB_USERS.split(',').includes(sender.login);
 
 const getIdFromString = name => {
   const match = RegExp(/\/ch(\d+)\//, 'g').exec(name);
