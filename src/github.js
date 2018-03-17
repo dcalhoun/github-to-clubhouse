@@ -14,7 +14,6 @@ exports.parseRequest = (event, body = {}) => {
         event: 'branch',
         id: getIdFromString(body.ref),
       };
-    // TODO: Rename to focus on review requested
     case event === 'pull_request' && body.action === 'opened':
       return {
         event: 'pullRequestOpened',
