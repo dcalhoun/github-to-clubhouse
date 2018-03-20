@@ -18,7 +18,14 @@ than every user.
 1.  `cp .env.dist .env`
 1.  Configure `.env` to your liking.
 1.  Deploy your project to your chosen host.
-1.  [Configure a GitHub webhook](https://developer.github.com/webhooks/creating/) for your repository pointing to your deployed project.
+1.  [Configure a GitHub webhook](https://developer.github.com/webhooks/creating/)
+    for your repository pointing to your deployed project that sends at least
+    the following events.
+    * Branch or tag creation
+    * Branch or tag deletion
+    * Issue comments
+    * Pull requests
+    * Pushes
 1.  Utilize the [branch names provided by Clubhouse](https://help.clubhouse.io/hc/en-us/articles/207540323-Using-The-Clubhouse-GitHub-Integration-with-Branches-and-Pull-Requests-).
 
 ## Resources
