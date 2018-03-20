@@ -5,8 +5,8 @@
 
 [Clubhouse's](https://clubhouse.io) GitHub integration is great! Unfortunately,
 not all of my team agreed with that assessment. With this micro-service, you can
-configure Clubhouse respond to GitHub events from a subset of users rather than
-every user.
+configure Clubhouse to respond to GitHub events from a subset of users rather
+than every user.
 
 * Creating a branch moves the associated ticket to "in dev".
 * Opening a pull request moves the associated ticket to "awaiting code review".
