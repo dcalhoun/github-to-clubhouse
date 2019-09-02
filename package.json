@@ -8,11 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "micro-dev",
-    "debug": "node --inspect ./node_modules/.bin/micro-dev",
     "format": "prettier '**/*.{css,md,js,json}' --write",
     "lint": "eslint '{index,src/**/*}.js'",
-    "start": "micro",
     "test": "jest"
   },
   "dependencies": {
