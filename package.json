@@ -2,7 +2,7 @@
   "name": "github-to-clubhouse",
   "version": "0.0.1",
   "description": "Configure Clubhouse to respond to nuanced GitHub events.",
-  "main": "index.js",
+  "main": "api/index.js",
   "repository": "git@github.com:dcalhoun/github-to-clubhouse.git",
   "author": "David Calhoun <dpcalhoun@gmail.com>",
   "license": "MIT",
