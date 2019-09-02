@@ -1,12 +1,12 @@
 require('dotenv').config();
 const crypto = require('crypto');
 const { json } = require('micro');
-const { parseRequest } = require('./src/github');
+const { parseRequest } = require('../src/github');
 const {
   markStoryAwaitingCodeReview,
   markStoryInQa,
   markStoryStarted,
-} = require('./src/clubhouse');
+} = require('../src/clubhouse');
 
 const sign = data =>
   'sha1=' +
